@@ -3,7 +3,6 @@ import jenkins
 import subprocess
 import time
 import sys
-import webbrowser
 
 
 def p(s):
@@ -13,7 +12,7 @@ def p(s):
 p('Getting list of running jobs')
 
 proc = subprocess.Popen('nova list | grep puppet-rjil-gate | cut -f6-9 -d- '
-                        '| cut -f1 -d' ' | sort | uniq -c', shell=True,
+                        '| cut -f1 -d" " | sort | uniq -c', shell=True,
                         stdout=subprocess.PIPE)
 stdout, _stderr = proc.communicate()
 
