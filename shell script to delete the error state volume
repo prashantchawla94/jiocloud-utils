@@ -1,0 +1,9 @@
+#!/bin/bash
+# Delete_error_state_volume
+cinder list | awk '{if ($4 == "error") print $2;}' > data.txt
+for j in `cat data.txt`
+do
+cinder delete $j
+done
+rm -r data.txt
+echo "Processing is complete"
