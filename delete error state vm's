@@ -1,0 +1,10 @@
+#!/bin/bash
+# Delete_error_state_VM
+nova list | awk '{if ($6 == "ERROR") print $2;}' > data.txt
+for j in `cat data.txt`
+do
+nova delete $j
+done
+rm -r data.txt
+echo "Processing is complete"
+
